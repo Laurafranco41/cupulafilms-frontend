@@ -1,5 +1,6 @@
 import React from 'react';
 import ActorCard from '../components/ActorCard';
+import { useNavigate } from 'react-router-dom';
 
 const actores = [
   {
@@ -17,6 +18,8 @@ const actores = [
 ];
 
 const Actores = () => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <h2>Catálogo de Actores</h2>
@@ -24,6 +27,37 @@ const Actores = () => {
         {actores.map((actor, index) => (
           <ActorCard key={index} actor={actor} />
         ))}
+      </div>
+
+      <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+        <button
+          onClick={() => navigate('/crear-actor')}
+          style={{
+            marginRight: '1rem',
+            padding: '0.6rem 1.2rem',
+            backgroundColor: '#4CAF50',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Registrar nuevo actor
+        </button>
+
+        <button
+          onClick={() => navigate('/eliminar-actor')}
+          style={{
+            padding: '0.6rem 1.2rem',
+            backgroundColor: '#f44336',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Eliminar actor
+        </button>
       </div>
     </div>
   );
